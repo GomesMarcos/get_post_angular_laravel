@@ -11,9 +11,9 @@ class TesteAgility extends Controller
     public function getTeste()
     {
         $client = new Client();
-        $args = ['Content-Type'  => 'application/json'];
+        // $args = ['Content-Type'  => 'application/json'];
 
-        $response = $client->get('https://eagle-backend-dev.somosagility.com.br/getTeste', $args);
+        $response = $client->get('https://eagle-backend-dev.somosagility.com.br/getTeste');
 
         if ($response->getStatusCode() === 200) {
             return $response->getBody();
@@ -31,7 +31,7 @@ class TesteAgility extends Controller
         ];
         $response = $client->post('https://eagle-backend-dev.somosagility.com.br/postTeste', $args);
 
-        if ($response->getStatusCode() === 200) {
+        if ($response->getStatusCode() >= 200 && $response->getStatusCode() < 400) {
             return $response->getBody();
         }
         return json_encode(['msg' => 'ocorreu o erro de status: ' . $response->getStatusCode()]);

@@ -1,0 +1,23 @@
+<div class="d-flex mb-3">
+  <div class="form-group me-3 w-100">
+    <input
+      type="text"
+      name="searchInput"
+      id="searchInput"
+      class="form-control"
+      placeholder="Buscar por nome, empresa ou email"
+      aria-describedby="searchHelpId"
+      [value]="searchString"
+      (keyup)="typingSearch($event)"
+      emissor="onEmit($event)"
+    />
+  </div>
+  <button
+    (click)="search()"
+    type="submit"
+    class="btn btn-primary"
+    emissor="onEmit($event)"
+  >
+    Buscar
+  </button>
+</div>

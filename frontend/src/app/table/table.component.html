@@ -1,0 +1,99 @@
+<app-search emissor="onEmit"></app-search>
+
+<h3 class="text-center text-uppercase">cadastrar funcionário</h3>
+<div class="d-flex justify-content-center">
+  <form [formGroup]="formCadastrarFuncionario" (ngSubmit)="cadastrarUsuario()">
+    <div class="form-group">
+      <label for="nomeFuncionario">Nome do Funcionário</label>
+      <input
+        type="text"
+        class="form-control"
+        name="nomeFuncionario"
+        id="nomeFuncionario"
+        aria-describedby="helpNome"
+        placeholder="Nome Sobrenome"
+        formControlName="name"
+      />
+      <small
+        *ngIf="formCadastrarFuncionario['name'] === ''"
+        id="helpNome"
+        class="form-text text-danger"
+        >Campo obrigatório</small
+      >
+    </div>
+    <div class="form-group">
+      <label for="nomeFuncionario">Empresa</label>
+      <input
+        type="text"
+        class="form-control"
+        name="empresa"
+        id="empresa"
+        aria-describedby="helpEmpresa"
+        placeholder="Empresa do funcionário"
+        formControlName="customer"
+      />
+      <small
+        *ngIf="formCadastrarFuncionario['customer'] === ''"
+        id="helpEmpresa"
+        class="form-text text-danger"
+        >Campo obrigatório</small
+      >
+    </div>
+    <div class="form-group">
+      <label for="emailFuncionario">E-mail do Funcionário</label>
+      <input
+        type="email"
+        class="form-control"
+        name="emailFuncionario"
+        id="emailFuncionario"
+        aria-describedby="helpEmail"
+        placeholder="email@example.com"
+        formControlName="email"
+      />
+      <small
+        *ngIf="formCadastrarFuncionario['email'] === ''"
+        id="helpEmail"
+        class="form-text text-danger"
+        >Campo obrigatório</small
+      >
+    </div>
+
+    <input
+      name="btnCadastrar"
+      id="btnCadastrar"
+      class="btn btn-primary w-100"
+      type="button"
+      value="Cadastrar"
+      (click)="cadastrarUsuario()"
+    />
+  </form>
+</div>
+
+<table class="table table-stripped table-hover">
+  <thead class="table-head">
+    <tr>
+      <th scope="col">#ID</th>
+      <th scope="col">Funcionárias(os)</th>
+      <th scope="col">Empresa</th>
+      <th scope="col">E-mail</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tbody class="table-body">
+    <tr *ngFor="let item of content; let i = index">
+      <td data-label="id">
+        {{ item.id }}
+      </td>
+      <td data-label="name">
+        {{ item.name }}
+      </td>
+      <td data-label="customer">{{ item.customer }}+</td>
+      <td data-label="email">
+        {{ item.email }}
+      </td>
+      <td data-label="status">
+        {{ item.status }}
+      </td>
+    </tr>
+  </tbody>
+</table>
